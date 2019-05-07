@@ -1,1 +1,1 @@
-# mc-server
+# mc_server

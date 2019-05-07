@@ -1,1 +1,9 @@
 *.jar
+ops.json
+server.properties
+usercache.json
+whitelist.json
+banned-ips.json
+banned-players.json
+logs
+world
