@@ -1,10 +1,11 @@
 require("dotenv").config();
 
 const express = require("express");
-const socket = require("socket.io");
 const bodyParser = require("body-parser");
-
+const PORT = process.env.PORT || 5000;
 const app = express();
+const http = require("http").Server(app);
+const io = require("socket.io")(http);
 
 // viewの設定
 app.set("views", `${__dirname}/views`);
@@ -23,9 +24,20 @@ app.get("/", (req, res, next) => {
 });
 
 // websocket
+io.sockets.on("connection", socket => {
+  // 接続時の処理
+  socket.on("entry", () => {
+    console.log("entry");
+  });
 
-const server = app.listen(process.env.PORT, () => {
-  console.log(
-    `Start Dashboard Server !! PORT:${server.address().port} DATE:${new Date()}`
-  );
+  // agentからのデータをブロードキャストする
+
+  // 切断時の処理
+  socket.on("disconnect", () => {
+    console.log("see you");
+  });
+});
+
+http.listen(PORT, () => {
+  console.log(`Start Dashboard Server !! DATE:${new Date()}`);
 });
