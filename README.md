@@ -1,4 +1,4 @@
-# mc_server
+# MSNS
 
 ## What this reposicotry?
 
@@ -14,11 +14,13 @@ Manage using Docker.
 ## How to use
 
 ### First run
+
 ```
 bash init.sh
 ```
 
 ### Server deploy
+
 ```
 docker-compose build && docker-compose up
 ```
