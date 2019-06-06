@@ -41,5 +41,5 @@ io.sockets.on("connection", socket => {
 });
 
 http.listen(PORT, () => {
-  console.log(`Start Dashboard Server !! DATE:${new Date()}`);
+  console.log(`Start MSNS Dashboard Server !! DATE:${new Date().toString()}`);
 });
