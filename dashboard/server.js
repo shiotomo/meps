@@ -26,15 +26,17 @@ app.get("/", (req, res, next) => {
 // websocket
 io.sockets.on("connection", socket => {
   // 接続時の処理
-  socket.on("entry", () => {
-    console.log("entry");
-  });
+  console.log("Entry server");
 
   // agentからのデータをブロードキャストする
+  socket.on("status", status => {
+    console.log("status:" + status);
+    io.emit("status", "status:" + status);
+  });
 
   // 切断時の処理
   socket.on("disconnect", () => {
-    console.log("see you");
+    console.log("Down server.");
   });
 });
 
