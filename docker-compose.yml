@@ -1,10 +1,28 @@
-version: '3'
+version: "3"
 
 services:
   mc_server:
     container_name: mc_server
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./minecraft/Dockerfile
+    networks:
+      - server-net
     volumes:
       - .:/app
+  agent:
+    container_name: agent
+    build:
+      context: .
+      dockerfile: ./agent/Dockerfile
+    networks:
+      - server-net
+  dashboard:
+    container_name: dashboard
+    build:
+      context: .
+      dockerfile: ./dashboard/Dockerfile
+
+networks:
+  servernet:
+    driver: bridge
