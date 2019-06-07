@@ -1,26 +1,35 @@
-# MSNS
+# Minecraft Server Notification System
 
-## What this reposicotry?
+## このシステムについて
 
-This is the Minecraft server container.
-Manage using Docker.
+Minecraft サーバを Docker コンテナ上で管理し、サーバを agent/dashboard による監視が行えるシステムです。
 
 ## Requirements
 
+- Node.js
+- Express
+- Scoket.io
+- Nginx
 - Docker
 - Docker Compose
-- Bash
 
-## How to use
+## 使い方
 
-### First run
+### 初回起動
 
 ```
 bash init.sh
+docker-compose build
 ```
 
-### Server deploy
+### Server 実行
 
 ```
-docker-compose build && docker-compose up
+docker-compose up dashboard
+```
+
+### Agent 実行
+
+```
+docker-compose up agent mc_server
 ```
