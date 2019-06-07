@@ -30,8 +30,8 @@ io.sockets.on("connection", socket => {
 
   // agentからのデータをブロードキャストする
   socket.on("status", status => {
-    console.log("status:" + status);
-    io.emit("status", "status:" + status);
+    console.log(status);
+    io.emit("status", JSON.parse(status));
   });
 
   // 切断時の処理

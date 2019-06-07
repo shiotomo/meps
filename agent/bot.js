@@ -6,8 +6,14 @@ const DASHBOARD = process.env.DASHBOARD;
 const socket = client.connect(DASHBOARD);
 
 // MinecraftServerのデータを取得する
+// 返り値: String
 const getStatus = () => {
-  return new Date();
+  const status = {
+    serverContainer: "hoge",
+    date: new Date().toDateString(),
+    ip: "192.168.10.10"
+  };
+  return JSON.stringify(status);
 };
 
 // 定期的にDashboardにデータを送信するメソッド
@@ -18,4 +24,5 @@ const agent = () => {
   }, 1000);
 };
 
+// agentを実行する
 agent();
