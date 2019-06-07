@@ -36,7 +36,7 @@ io.sockets.on("connection", socket => {
 
   // 切断時の処理
   socket.on("disconnect", () => {
-    console.log("Down server.");
+    console.log("Exit server.");
   });
 });
 
