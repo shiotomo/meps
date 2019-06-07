@@ -5,7 +5,6 @@ const dasboards = () => {
 
   // statusにはJSON形式のデータが格納されている
   socket.on("status", status => {
-    console.log(status);
     if (status.active && serverList.indexOf(status.containerId) == -1) {
       serverList.push(status.containerId);
       const div = document.createElement("div");
