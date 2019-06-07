@@ -9,8 +9,8 @@ const socket = client.connect(DASHBOARD);
 // 返り値: String
 const getStatus = active_flag => {
   const status = {
-    serverContainer: "hoge",
-    date: new Date().toDateString(),
+    containerId: "hoge",
+    date: new Date().toString(),
     ip: "192.168.10.10",
     active: active_flag
   };
