@@ -17,12 +17,16 @@ services:
       dockerfile: ./agent/Dockerfile
     networks:
       - server-net
+    volumes:
+      - ./agent:/workspace
   dashboard:
     container_name: dashboard
     build:
       context: .
       dockerfile: ./dashboard/Dockerfile
+    volumes:
+      - ./dashboard:/workspace
 
 networks:
-  servernet:
+  server-net:
     driver: bridge
