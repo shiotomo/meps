@@ -9,7 +9,6 @@ Minecraft サーバを Docker コンテナ上で管理し、サーバを agent/d
 - Node.js
 - Express
 - Scoket.io
-- Nginx
 - Docker
 - Docker Compose
 
