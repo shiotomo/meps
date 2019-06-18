@@ -9,7 +9,9 @@ services:
     networks:
       - server-net
     volumes:
-      - .:/app
+      - ./minecraft:/workspace
+    ports:
+      - 25565:25565
   agent:
     container_name: agent
     build:
@@ -19,6 +21,8 @@ services:
       - server-net
     volumes:
       - ./agent:/workspace
+    depends_on:
+      - mc_server
   dashboard:
     container_name: dashboard
     build:
@@ -26,6 +30,8 @@ services:
       dockerfile: ./dashboard/Dockerfile
     volumes:
       - ./dashboard:/workspace
+    ports:
+      - 5000:5000
 
 networks:
   server-net:
