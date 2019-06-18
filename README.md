@@ -15,10 +15,7 @@ Minecraft サーバを Docker コンテナ上で管理し、サーバを agent/d
 
 ## 使い方
 
-### 初回起動
-
 ```
-bash init.sh
 docker-compose build
 ```
 
