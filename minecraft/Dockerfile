@@ -6,4 +6,4 @@ WORKDIR /workspace
 RUN yum update -y
 RUN yum install -y wget
 
-CMD bash init.sh && java -Xmx1024M -Xms1024M -jar server.jar nogui
+CMD bash init.sh && java -Xmx512M -Xms512M -jar server.jar nogui
