@@ -6,35 +6,9 @@ services:
     build:
       context: .
       dockerfile: ./minecraft/Dockerfile
-    networks:
-      - server-net
     volumes:
       - ./minecraft:/workspace
     ports:
       - 25565:25565
     tty: true
     stdin_open: true
-  agent:
-    container_name: agent
-    build:
-      context: .
-      dockerfile: ./agent/Dockerfile
-    networks:
-      - server-net
-    volumes:
-      - ./agent:/workspace
-    depends_on:
-      - mc_server
-  dashboard:
-    container_name: dashboard
-    build:
-      context: .
-      dockerfile: ./dashboard/Dockerfile
-    volumes:
-      - ./dashboard:/workspace
-    ports:
-      - 5000:5000
-
-networks:
-  server-net:
-    driver: bridge
