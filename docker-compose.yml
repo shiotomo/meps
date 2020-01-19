@@ -8,6 +8,7 @@ services:
       dockerfile: ./minecraft/Dockerfile
     volumes:
       - ./minecraft:/workspace
+    restart: always
     ports:
       - 25565:25565
     tty: true

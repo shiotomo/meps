@@ -7,6 +7,7 @@ banned-ips.json
 banned-players.json
 logs
 world
+crash-reports
 
 # Created by https://www.gitignore.io/api/node
 # Edit at https://www.gitignore.io/?templates=node
