@@ -11,7 +11,7 @@ before do
   message = {
     status: 'request error.'
   }
-  halt 401, message.to_json if request.ip !=  ENV['ALLOW_HOST']
+  halt 401, message.to_json if request.ip !=  ENV['ALLOW_HOST'] && ENV['ALLOW_HOST'] != '0.0.0.0'
 end
 
 error do
