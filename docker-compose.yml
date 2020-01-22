@@ -1,6 +1,14 @@
 version: "3"
 
 services:
+  api:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - ${PORT}:4567
+    volumes:
+      - .:/app
   mc_server:
     container_name: mc_server
     build:

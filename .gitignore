@@ -8,6 +8,7 @@ banned-players.json
 logs
 world
 crash-reports
+.bash_history
 
 # Created by https://www.gitignore.io/api/node
 # Edit at https://www.gitignore.io/?templates=node
