@@ -5,19 +5,27 @@ require 'dotenv'
 require 'json'
 
 Dotenv.load
+set :show_exceptions, :after_handler
 
-error do
-  status = {
+before do
+  message = {
     status: 'request error.'
   }
-  return status.to_json
+  halt 401, message.to_json if request.ip !=  ENV['ALLOW_HOST']
+end
+
+error do
+  message = {
+    status: 'request error.'
+  }
+  return message.to_json
 end
 
 not_found do
-  status = {
+  message = {
     status: 'not found.'
   }
-  return status.to_json
+  return message.to_json
 end
 
 namespace '/api/v1' do
