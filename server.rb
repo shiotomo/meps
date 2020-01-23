@@ -9,7 +9,7 @@ set :show_exceptions, :after_handler
 
 before do
   message = {
-    status: 'request error.'
+    status: 'Unauthorized.'
   }
   halt 401, message.to_json if request.ip !=  ENV['ALLOW_HOST'] && ENV['ALLOW_HOST'] != '0.0.0.0'
 end
