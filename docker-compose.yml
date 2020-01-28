@@ -9,6 +9,7 @@ services:
       - ${PORT}:4567
     volumes:
       - .:/app
+      - /var/run/docker.sock:/var/run/docker.sock:ro
   mc_server:
     container_name: mc_server
     build:

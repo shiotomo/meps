@@ -3,6 +3,7 @@ require 'sinatra/reloader'
 require 'sinatra/namespace'
 require 'dotenv'
 require 'json'
+require_relative './lib/docker_container'
 
 Dotenv.load
 set :show_exceptions, :after_handler
@@ -44,9 +45,12 @@ namespace '/api/v1' do
   end
 
   get '/status' do
+    container_status = DockerContainer.get_status(__dir__)
+    # container_status = DockerContainer.load_docker_compose_yml(__dir__)
     status = {
       minecraft_version: ENV['MINECRAFT_VERSION'],
-      host: request.host
+      host: request.host,
+      container_status: container_status
     }
     return status.to_json
   end
