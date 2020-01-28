@@ -30,6 +30,7 @@ not_found do
 end
 
 namespace '/api/v1' do
+  # whitelist.jsonを返却する
   get '/whitelist' do
     File.open("./minecraft/whitelist.json") do |f|
       @whitelist_json = JSON.load(f)
@@ -37,6 +38,7 @@ namespace '/api/v1' do
     return @whitelist_json.to_json
   end
 
+  # ops.jsonを返却する
   get '/ops' do
     File.open("./minecraft/ops.json") do |f|
       @ops_json = JSON.load(f)
@@ -44,9 +46,9 @@ namespace '/api/v1' do
     return @ops_json.to_json
   end
 
+  # サーバの稼働状況を返却する
   get '/status' do
     container_status = DockerContainer.get_status(__dir__)
-    # container_status = DockerContainer.load_docker_compose_yml(__dir__)
     status = {
       minecraft_version: ENV['MINECRAFT_VERSION'],
       host: request.host,
