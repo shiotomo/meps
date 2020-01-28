@@ -18,6 +18,7 @@ class DockerContainer
       return container_status_map
     end
 
+    private
     # docker_compose.ymlに記されているコンテナイメージ名のリストを返却する
     # コンテナイメージ名はすべて"vmario_コンテナイメージ名"の形になる
     def load_docker_compose_yml(current_dir)
