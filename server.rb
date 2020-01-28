@@ -9,9 +9,9 @@ set :show_exceptions, :after_handler
 
 before do
   message = {
-    status: 'Unauthorized.'
+    status: 'HTTP 403: Access Denied.'
   }
-  halt 401, message.to_json if request.ip !=  ENV['ALLOW_HOST'] && ENV['ALLOW_HOST'] != '0.0.0.0'
+  halt 403, message.to_json if  ENV['ALLOW_HOST'] != '0.0.0.0' && ENV['ALLOW_HOST'] != request.ip
 end
 
 error do
@@ -41,5 +41,13 @@ namespace '/api/v1' do
       @ops_json = JSON.load(f)
     end
     return @ops_json.to_json
+  end
+
+  get '/status' do
+    status = {
+      minecraft_version: ENV['MINECRAFT_VERSION'],
+      host: request.host
+    }
+    return status.to_json
   end
 end
