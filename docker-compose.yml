@@ -4,7 +4,7 @@ services:
   api:
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./docker/api/Dockerfile
     ports:
       - ${PORT}:4567
     volumes:
@@ -14,7 +14,7 @@ services:
     container_name: mc_server
     build:
       context: .
-      dockerfile: ./minecraft/Dockerfile
+      dockerfile: ./docker/minecraft/Dockerfile
     volumes:
       - ./minecraft:/workspace
     restart: always
