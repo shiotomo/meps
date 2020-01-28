@@ -3,6 +3,7 @@ require 'yaml'
 
 class DockerContainer
   class << self
+    # msnsのコンテナ稼働状況を返却する
     def get_status(current_dir)
       container_status_map = {}
       container_list = load_docker_compose_yml(current_dir)
@@ -20,7 +21,6 @@ class DockerContainer
 
     private
     # docker_compose.ymlに記されているコンテナイメージ名のリストを返却する
-    # コンテナイメージ名はすべて"vmario_コンテナイメージ名"の形になる
     def load_docker_compose_yml(current_dir)
       docker_compose_yml_path = current_dir.to_s + '/docker-compose.yml'
       pp docker_compose_yml_path
