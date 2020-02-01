@@ -8,6 +8,7 @@ require_relative './lib/docker_container'
 Dotenv.load
 set :show_exceptions, :after_handler
 
+# 指定したIPアドレス以外からのアクセスは禁止にする
 before do
   message = {
     status: 'HTTP 403: Access Denied.'
@@ -15,6 +16,7 @@ before do
   halt 403, message.to_json if  ENV['ALLOW_HOST'] != '0.0.0.0' && ENV['ALLOW_HOST'] != request.ip
 end
 
+# error handling
 error do
   message = {
     status: 'request error.'
@@ -22,6 +24,7 @@ error do
   return message.to_json
 end
 
+# not found
 not_found do
   message = {
     status: 'not found.'
