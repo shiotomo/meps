@@ -1,20 +1,26 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require 'sinatra/namespace'
-require 'dotenv'
 require 'json'
+
 require_relative './lib/docker_container'
 require_relative './lib/minecraft'
+require_relative './config/environment'
 
-Dotenv.load
 set :show_exceptions, :after_handler
+
+configure do
+  file = File.new("#{settings.root}/logs/msns_#{settings.environment}.log", 'a+')
+  file.sync = true
+  use Rack::CommonLogger, file
+end
 
 # 指定したIPアドレス以外からのアクセスは禁止にする
 before do
   message = {
     status: 'HTTP 403: Access Denied.'
   }
-  halt 403, message.to_json if  ENV['ALLOW_HOST'] != '0.0.0.0' && ENV['ALLOW_HOST'] != request.ip
+  halt 403, message.to_json if ENV['ALLOW_HOST'] != '0.0.0.0' && ENV['ALLOW_HOST'] != request.ip
 end
 
 # error handling
@@ -59,9 +65,5 @@ namespace '/api/v1' do
       container_status: container_status
     }
     return status.to_json
-  end
-
-  get '/test' do
-    Minecraft.world_backup(ENV['MINECRAFT_VERSION'], './minecraft', './backup')
   end
 end

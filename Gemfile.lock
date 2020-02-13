@@ -20,6 +20,7 @@ GEM
     foreman (0.87.0)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
+    logger (1.4.2)
     minitest (5.14.0)
     multi_json (1.14.1)
     mustermann (1.1.1)
@@ -59,6 +60,7 @@ DEPENDENCIES
   docker-api
   dotenv
   foreman
+  logger
   puma
   rake
   rubyzip

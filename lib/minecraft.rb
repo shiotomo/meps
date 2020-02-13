@@ -7,6 +7,7 @@ class Minecraft
     def world_backup(version, minecraft_server_path, minecraft_server_back_up_path)
       dir_name = create_back_up_dir_name(version)
       compress(minecraft_server_path, minecraft_server_back_up_path + '/' + dir_name)
+      return 'Backup Success !!'
     end
 
     private
