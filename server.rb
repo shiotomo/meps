@@ -4,6 +4,7 @@ require 'sinatra/namespace'
 require 'dotenv'
 require 'json'
 require_relative './lib/docker_container'
+require_relative './lib/minecraft'
 
 Dotenv.load
 set :show_exceptions, :after_handler
@@ -58,5 +59,9 @@ namespace '/api/v1' do
       container_status: container_status
     }
     return status.to_json
+  end
+
+  get '/test' do
+    Minecraft.world_backup(ENV['MINECRAFT_VERSION'], './minecraft', './backup')
   end
 end

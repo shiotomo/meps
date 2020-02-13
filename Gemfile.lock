@@ -32,6 +32,7 @@ GEM
       rack
     rake (13.0.1)
     ruby2_keywords (0.0.2)
+    rubyzip (2.2.0)
     sinatra (2.0.8.1)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -60,6 +61,7 @@ DEPENDENCIES
   foreman
   puma
   rake
+  rubyzip
   sinatra
   sinatra-contrib
 
