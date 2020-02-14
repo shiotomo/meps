@@ -58,11 +58,11 @@ namespace '/api/v1' do
 
   # サーバの稼働状況を返却する
   get '/status' do
-    container_status = DockerContainer.get_status(__dir__)
+    status = DockerContainer.get_status(__dir__)
     status = {
-      minecraft_version: ENV['MINECRAFT_VERSION'],
+      version: ENV['MINECRAFT_VERSION'],
       host: request.host,
-      container_status: container_status
+      status: status
     }
     return status.to_json
   end
