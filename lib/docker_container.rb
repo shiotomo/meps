@@ -23,7 +23,6 @@ class DockerContainer
     # docker_compose.ymlに記されているコンテナイメージ名のリストを返却する
     def load_docker_compose_yml(current_dir)
       docker_compose_yml_path = current_dir.to_s + '/docker-compose.yml'
-      pp docker_compose_yml_path
       yaml = YAML.load_file(docker_compose_yml_path)
       container_list = yaml['services'].keys
       container_list = container_list.collect { |item| 'msns_' + item }
