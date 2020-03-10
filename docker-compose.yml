@@ -10,6 +10,19 @@ services:
     volumes:
       - .:/app
       - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - msns-net
+  db:
+    container_name: db
+    build:
+      context: .
+      dockerfile: ./docker/db/Dockerfile
+    env_file: .env
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+    networks:
+      - msns-net
   mc_server:
     container_name: mc_server
     build:
@@ -22,3 +35,8 @@ services:
       - 25565:25565
     tty: true
     stdin_open: true
+    networks:
+      - msns-net
+networks:
+  msns-net:
+    driver: bridge
