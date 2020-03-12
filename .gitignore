@@ -12,6 +12,8 @@ crash-reports
 minecraft/logs
 fluentd/pos
 mysql_data
+.mysql_history
+.bash_history
 
 # Created by https://www.gitignore.io/api/node
 # Edit at https://www.gitignore.io/?templates=node
