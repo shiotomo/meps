@@ -80,7 +80,12 @@ namespace '/api/v1' do
 
   # operation_logを取得する
   get '/operation_log' do
-    operation_log_json = OperationLog.get_operation_log
+    puts "================"
+    pp request.body
+    pp params
+    pp params[:date]
+    puts "================"
+    operation_log_json = OperationLog.get_operation_log(params[:date])
     return operation_log_json.to_json
   end
 end
