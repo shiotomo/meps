@@ -7,7 +7,7 @@ require_relative './config/environment'
 
 require_relative './lib/docker_container'
 require_relative './lib/minecraft'
-require_relative './lib/operation_log'
+require_relative './lib/access_log'
 
 set :show_exceptions, :after_handler
 
@@ -79,8 +79,8 @@ namespace '/api/v1' do
   end
 
   # operation_logを取得する
-  get '/operation_log' do
-    operation_log_json = OperationLog.get_operation_log(params[:date])
-    return operation_log_json.to_json
+  get '/access_log' do
+    access_log_json = AccessLog.get_access_log(params[:date])
+    return access_log_json.to_json
   end
 end
