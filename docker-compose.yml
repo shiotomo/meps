@@ -21,6 +21,7 @@ services:
     volumes:
       - ./mysql_data:/var/lib/mysql
       - ./my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./db/migration:/app
     networks:
       - msns-net
   mc_server:
