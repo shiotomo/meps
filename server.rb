@@ -17,10 +17,10 @@ configure do
   use Rack::CommonLogger, file
 end
 
-# 指定したIPアドレス以外からのアクセスは禁止にする
 before do
+  # 指定したIPアドレス以外からのアクセスは禁止にする
   message = {
-    status: 'HTTP 403: Access Denied.'
+    status: 'HTTP 401: Unauthorized.'
   }
   halt 403, message.to_json if ENV['ALLOW_HOST'] != '0.0.0.0' && ENV['ALLOW_HOST'] != request.ip
 end
