@@ -1,5 +1,5 @@
-require_relative './common/mysql_client'
-require_relative './common/time_converter'
+require_relative '../common/mysql_client'
+require_relative '../common/time_converter'
 
 class AccessLog
   ERROR_MESSAGE = {status: "Invalid date format."}

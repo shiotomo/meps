@@ -1,7 +1,7 @@
 require 'clockwork'
 include Clockwork
 
-require_relative './lib/minecraft'
+require_relative './lib/core/minecraft'
 require_relative './config/environment'
 
 log_file_path = './logs/msns_cron_worker.log'

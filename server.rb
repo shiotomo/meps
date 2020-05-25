@@ -5,9 +5,9 @@ require 'json'
 
 require_relative './config/environment'
 
-require_relative './lib/docker_container'
-require_relative './lib/minecraft'
-require_relative './lib/access_log'
+require_relative './lib/core/docker_container'
+require_relative './lib/core/minecraft'
+require_relative './lib/core/access_log'
 
 set :show_exceptions, :after_handler
 
