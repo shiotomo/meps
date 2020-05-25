@@ -78,7 +78,7 @@ namespace '/api/v1' do
     return status.to_json
   end
 
-  # operation_logを取得する
+  # access_logを取得する
   get '/access_log' do
     access_log_json = AccessLog.get_access_log(params[:date])
     return access_log_json.to_json
