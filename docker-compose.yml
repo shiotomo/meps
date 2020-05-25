@@ -4,12 +4,31 @@ services:
   api:
     build:
       context: .
-      dockerfile: ./docker/api/Dockerfile
+      dockerfile: ./docker/app/Dockerfile
     ports:
       - ${PORT}:4567
+    command: bundle exec ruby server.rb -e production -p 4567
     volumes:
       - .:/app
       - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - msns-net
+  cron:
+    build:
+      context: .
+      dockerfile: ./docker/app/Dockerfile
+    command: bundle exec clockwork cron_worker.rb
+    volumes:
+      - .:/app
+    networks:
+      - msns-net
+  fluentd:
+    build:
+      context: .
+      dockerfile: ./docker/app/Dockerfile
+    command: bundle exec fluentd -c ./fluentd/fluent.conf
+    volumes:
+      - .:/app
     networks:
       - msns-net
   db:
