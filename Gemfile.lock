@@ -37,7 +37,6 @@ GEM
       tzinfo (>= 1.0, < 3.0)
       tzinfo-data (~> 1.0)
       yajl-ruby (~> 1.0)
-    foreman (0.87.0)
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -130,7 +129,6 @@ DEPENDENCIES
   dotenv
   fluent-plugin-mysql
   fluentd
-  foreman
   logger
   mysql2
   pry

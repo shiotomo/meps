@@ -7,7 +7,7 @@ services:
       dockerfile: ./docker/app/Dockerfile
     ports:
       - ${PORT}:4567
-    command: bundle exec ruby server.rb -e production -p 4567
+    command: bundle exec ruby app/server.rb -e production -p 4567
     volumes:
       - .:/app
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -17,7 +17,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/app/Dockerfile
-    command: bundle exec clockwork cron_worker.rb
+    command: bundle exec clockwork app/cron_worker.rb
     volumes:
       - .:/app
     networks:

@@ -3,16 +3,17 @@ require 'sinatra/reloader'
 require 'sinatra/namespace'
 require 'json'
 
-require_relative './config/environment'
+require_relative '../config/environment'
 
-require_relative './lib/core/docker_container'
-require_relative './lib/core/minecraft'
-require_relative './lib/core/access_log'
+require_relative '../lib/core/docker_container'
+require_relative '../lib/core/minecraft'
+require_relative '../lib/core/access_log'
 
 set :show_exceptions, :after_handler
 
 configure do
-  file = File.new("#{settings.root}/logs/msns_#{settings.environment}.log", 'a+')
+  file = File.new("#{settings.root}/../logs/msns_#{settings.environment}.log", 'a+')
+  puts file
   file.sync = true
   use Rack::CommonLogger, file
 end
