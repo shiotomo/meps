@@ -3,24 +3,25 @@ require 'sinatra/reloader'
 require 'sinatra/namespace'
 require 'json'
 
-require_relative './config/environment'
+require_relative '../config/environment'
 
-require_relative './lib/docker_container'
-require_relative './lib/minecraft'
-require_relative './lib/access_log'
+require_relative '../lib/core/docker_container'
+require_relative '../lib/core/minecraft'
+require_relative '../lib/core/access_log'
 
 set :show_exceptions, :after_handler
 
 configure do
-  file = File.new("#{settings.root}/logs/msns_#{settings.environment}.log", 'a+')
+  file = File.new("#{settings.root}/../logs/msns_#{settings.environment}.log", 'a+')
+  puts file
   file.sync = true
   use Rack::CommonLogger, file
 end
 
-# 指定したIPアドレス以外からのアクセスは禁止にする
 before do
+  # 指定したIPアドレス以外からのアクセスは禁止にする
   message = {
-    status: 'HTTP 403: Access Denied.'
+    status: 'HTTP 401: Unauthorized.'
   }
   halt 403, message.to_json if ENV['ALLOW_HOST'] != '0.0.0.0' && ENV['ALLOW_HOST'] != request.ip
 end

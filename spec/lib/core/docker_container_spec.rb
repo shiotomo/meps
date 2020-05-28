@@ -1,5 +1,5 @@
-require_relative '../spec_helper'
-require_relative '../../lib/docker_container'
+require_relative '../../spec_helper'
+require_relative '../../../lib/core/docker_container'
 
 RSpec.describe 'docker_container' do
   context 'get_status' do

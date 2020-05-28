@@ -10,5 +10,3 @@ RUN apt-get update
 RUN apt-get install -y libgmp-dev
 
 RUN bundle install
-
-CMD bundle exec foreman start

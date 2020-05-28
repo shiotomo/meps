@@ -1,6 +1,6 @@
 require 'zip'
 require 'json'
-require_relative './common/request_client'
+require_relative '../common/request_client'
 
 class Minecraft
   MINECRAFT_API = 'https://api.mojang.com/users/profiles/minecraft/'

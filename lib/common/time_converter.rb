@@ -8,7 +8,8 @@ class TimeConverter
   def initialize(date_str)
     @date_str = date_str
   end
-  
+
+  # MySQLのtimestampか判定する
   def self.is_mysql_time_stamp(date_str)
     if DATE_REGEXP_FORMAT === date_str
       return true
