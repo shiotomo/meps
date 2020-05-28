@@ -1,11 +1,9 @@
-#!/bin/bash
+#!/bin/env bash
 
 eval "$(cat .env <(echo) <(declare -x))"
 
 build() {
   git pull origin master
-  echo "MySQLのコンソールか表示されたらsource setup.sqlと打ち込んで,実行が終了したらexitしてください."
-  docker-compose run db mysql -u root -p$MYSQL_PASSWORD
   docker-compose build
 }
 
