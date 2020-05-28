@@ -8,7 +8,5 @@ start:
 	bash scripts/deploy.sh start
 restart:
 	bash scripts/deploy.sh restart
-stop:
-	bash scripts/deploy.sh stop
 env:
 	bash scripts/deploy.sh env
