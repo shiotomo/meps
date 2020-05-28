@@ -14,11 +14,13 @@ APIサーバはIPアドレスによる、アクセス制御機能があります
 
 ## 使用技術
 
-- Bash
 - Ruby
 - Sinatra
+- Bash
 - Docker
 - Docker Compose
+- MySQL
+- Fluentd
 
 ## 使い方
 
@@ -32,22 +34,13 @@ cp .env.sample .env
 ```
 
 Minecraftサーバをダウンロードします。
-同梱しているsetup.shを実行してください。
 
 ```
-./setup.sh
-```
-
-コンテナの用意を行います。
-
-```
-docker-compose build
+make setup
 ```
 
 ### 起動
 
-Docker Composeを使って起動します。
-
 ```
-docker-compose up
+make start
 ```
