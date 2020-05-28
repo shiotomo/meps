@@ -1,12 +1,8 @@
 #!/bin/bash
 
-file=server.jar
+file=./minecraft/server.jar
 
 eval "$(cat .env <(echo) <(declare -x))"
-
-# echo $PORT
-# echo $ALLOW_HOST
-# echo $MINECRAFT_VERSION
 
 if [ -e $file ]; then
   echo "Found !!"
