@@ -15,6 +15,7 @@ mysql_data
 .mysql_history
 .bash_history
 fluentd/flunetd
+fluentd/flunetd/pos
 
 # Created by https://www.gitignore.io/api/node
 # Edit at https://www.gitignore.io/?templates=node
