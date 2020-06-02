@@ -8,14 +8,13 @@ banned-players.json
 world
 crash-reports
 .bash_history
-./backup/*
+backup/*
 minecraft/logs
 fluentd/pos
 mysql_data
 .mysql_history
 .bash_history
-fluentd/flunetd
-fluentd/flunetd/pos
+fluentd/fluentd/
 
 # Created by https://www.gitignore.io/api/node
 # Edit at https://www.gitignore.io/?templates=node
