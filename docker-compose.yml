@@ -27,8 +27,12 @@ services:
       context: .
       dockerfile: ./docker/fluentd/Dockerfile
     command: bundle exec fluentd -c ./fluent.conf
+    env_file:
+      - ./fluentd/.env
     volumes:
       - ./fluentd:/app
+      - ./minecraft:/app/minecraft
+      - ./api:/app/api
     networks:
       - msns-net
   db:

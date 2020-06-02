@@ -8,6 +8,7 @@ require_relative './config/environment'
 require_relative './lib/core/docker_container'
 require_relative './lib/core/minecraft'
 require_relative './lib/core/access_log'
+require_relative './lib/core/minecraft_log'
 
 set :show_exceptions, :after_handler
 
@@ -31,7 +32,7 @@ error do
   message = {
     status: 'request error.'
   }
-  return message.to_json
+  return message.to_json()
 end
 
 # not found
@@ -39,7 +40,7 @@ not_found do
   message = {
     status: 'not found.'
   }
-  return message.to_json
+  return message.to_json()
 end
 
 namespace '/api/v1' do
@@ -48,7 +49,7 @@ namespace '/api/v1' do
     File.open("./minecraft/whitelist.json") do |f|
       @whitelist_json = JSON.load(f)
     end
-    return @whitelist_json.to_json
+    return @whitelist_json.to_json()
   end
 
   # whitelist.jsonにアカウントを追加する
@@ -57,7 +58,7 @@ namespace '/api/v1' do
     data = JSON.load(body)
     whitelist_path = __dir__ + '/minecraft/whitelist.json'
     message = Minecraft.add_whitelist(whitelist_path, data['name'])
-    return message.to_json
+    return message.to_json()
   end
 
   # ops.jsonを返却する
@@ -65,7 +66,7 @@ namespace '/api/v1' do
     File.open("./minecraft/ops.json") do |f|
       @ops_json = JSON.load(f)
     end
-    return @ops_json.to_json
+    return @ops_json.to_json()
   end
 
   # サーバの稼働状況を返却する
@@ -76,12 +77,18 @@ namespace '/api/v1' do
       host: request.host,
       status: status
     }
-    return status.to_json
+    return status.to_json()
   end
 
   # access_logを取得する
   get '/access_log' do
-    access_log_json = AccessLog.get_access_log(params[:date])
-    return access_log_json.to_json
+    access_log = AccessLog.get_log(params[:date])
+    return access_log.to_json()
+  end
+
+  # minecraft_log(ゲームサーバログ)を取得する
+  get '/minecraft_log' do
+    minecraft_log = MinecraftLog.get_log(params[:date])
+    return minecraft_log.to_json()
   end
 end
