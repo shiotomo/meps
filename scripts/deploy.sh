@@ -1,6 +1,6 @@
 #!/bin/env bash
 
-eval "$(cat .env <(echo) <(declare -x))"
+eval "$(cat ./scripts/.env <(echo) <(declare -x))"
 
 build() {
   git pull origin master

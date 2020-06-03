@@ -5,8 +5,8 @@ ENV HOME /app
 WORKDIR $HOME
 ADD ./api/Gemfile $HOME/Gemfile
 ADD ./api/Gemfile.lock $HOME/Gemfile.lock
-ADD ./.env $HOME/.env
-ADD ./.env.sample $HOME/.env.sample
+ADD ./api/.env $HOME/.env
+ADD ./api/.env.sample $HOME/.env.sample
 
 RUN apt-get update
 RUN apt-get install -y libgmp-dev

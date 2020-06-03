@@ -5,12 +5,13 @@ services:
     build:
       context: .
       dockerfile: ./docker/api/Dockerfile
-    ports:
-      - ${PORT}:4567
     command: bundle exec ruby server.rb -e production -p 4567
+    env_file: ./api/.env
     volumes:
       - ./api:/app
       - /var/run/docker.sock:/var/run/docker.sock:ro
+    ports:
+      - 4567:4567
     networks:
       - msns-net
   worker:
@@ -18,6 +19,8 @@ services:
       context: .
       dockerfile: ./docker/worker/Dockerfile
     command: bundle exec clockwork cron_worker.rb
+    env_file:
+      - ./worker/.env
     volumes:
       - ./worker:/app
     networks:
@@ -27,8 +30,7 @@ services:
       context: .
       dockerfile: ./docker/fluentd/Dockerfile
     command: bundle exec fluentd -c ./fluent.conf
-    env_file:
-      - ./fluentd/.env
+    env_file: ./fluentd/.env
     volumes:
       - ./fluentd:/app
       - ./minecraft:/app/minecraft
@@ -40,7 +42,7 @@ services:
     build:
       context: .
       dockerfile: ./docker/db/Dockerfile
-    env_file: .env
+    env_file: ./api/.env
     volumes:
       - ./mysql_data:/var/lib/mysql
       - ./db/my.cnf:/etc/mysql/conf.d/my.cnf

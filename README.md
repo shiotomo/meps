@@ -14,20 +14,33 @@ APIサーバはIPアドレスによる、アクセス制御機能があります
 
 ## 使用技術
 
-- Ruby
-- Sinatra
-- Bash
-- Docker
-- Docker Compose
-- MySQL
-- Fluentd
+- api
+  - Ruby
+  - Sinatra
+  - MySQL
+- fluentd
+  - Fluentd
+  - MySQL
+- worker
+  - Ruby
+  - clockwork
+- slackbot
+  - Ruby
+- discordbot
+  - Ruby
+- scripts
+  - Bash
+- other
+  - Makefile
+  - Docker
+  - Docker Compose
 
 ## 使い方
 
 ### 初期設定
 
-.envファイルを作成します。
-.env.sampleをコピーして.envの設定を行ってください。
+api, fluentd, worker, slackbot, discordbot, slackbot, scriptsそれぞれに.envファイルを作成します。
+各プロジェクト内で.env.sampleをコピーして.envの設定を行ってください。
 
 ```
 cp .env.sample .env

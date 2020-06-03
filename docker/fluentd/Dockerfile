@@ -5,8 +5,8 @@ ENV HOME /app
 WORKDIR $HOME
 ADD ./fluentd/Gemfile $HOME/Gemfile
 ADD ./fluentd/Gemfile.lock $HOME/Gemfile.lock
-ADD ./.env $HOME/.env
-ADD ./.env.sample $HOME/.env.sample
+ADD ./fluentd/.env $HOME/.env
+ADD ./fluentd/.env.sample $HOME/.env.sample
 
 RUN apt-get update
 RUN apt-get install -y libgmp-dev
