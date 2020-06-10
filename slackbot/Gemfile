@@ -4,18 +4,8 @@ source "https://rubygems.org"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
-gem 'docker-api'
 gem 'dotenv'
-gem 'puma'
-gem 'rake'
-gem 'sinatra'
-gem 'sinatra-contrib'
-gem 'clockwork'
-gem 'rubyzip'
 gem 'logger'
 gem 'rspec'
 gem 'rest-client'
-gem 'pry'
-gem 'fluentd'
-gem 'fluent-plugin-mysql'
-gem 'mysql2'
+gem 'slack-ruby-client'

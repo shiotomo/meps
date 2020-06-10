@@ -4,6 +4,14 @@ file=./minecraft/server.jar
 
 eval "$(cat .env <(echo) <(declare -x))"
 
+# .envの配布
+cp ./.env ./api/.env
+cp ./.env ./slackbot/.env
+cp ./.env ./discordbot/.env
+cp ./.env ./fluentd/.env
+cp ./.env ./worker/.env
+
+# Minecraftサーバ周りの処理
 if [ -e $file ]; then
   echo "Found !!"
   exit
