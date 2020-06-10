@@ -27,6 +27,17 @@ services:
       - ./minecraft:/app/minecraft
     networks:
       - msns-net
+  slackbot:
+    build:
+      context: .
+      dockerfile: ./docker/slackbot/Dockerfile
+    command: bundle exec ruby slackbot.rb
+    env_file:
+      - ./slackbot/.env
+    volumes:
+      - ./slackbot:/app
+    networks:
+      - msns-net
   fluentd:
     build:
       context: .

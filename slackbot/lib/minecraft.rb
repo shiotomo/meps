@@ -28,7 +28,7 @@ class Minecraft
     def get_url(type)
       url = ENV['API_URL']
       urls = {
-        whitelist: url + '/whitelist'
+        whitelist: url + '/whitelist',
         ops: url + '/ops'
       }
       return urls[:"#{type}"]
