@@ -23,6 +23,8 @@ services:
       - ./worker/.env
     volumes:
       - ./worker:/app
+      - ./backup:/app/backup
+      - ./minecraft:/app/minecraft
     networks:
       - msns-net
   fluentd:

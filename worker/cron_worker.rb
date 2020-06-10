@@ -14,6 +14,6 @@ File.open(log_file_path, 'w') unless File.exist?(log_file_path)
 # every(5.seconds, 'server_back_up') do
 # TODO: API経由でバックアップを行う
 every(1.days, 'server_back_up', at: '00:00') do
-  mes = Minecraft.world_backup(ENV['MINECRAFT_VERSION'], '../minecraft', '../backup')
+  mes = Minecraft.world_backup(ENV['MINECRAFT_VERSION'], './minecraft', './backup')
   @logger.info(mes)
 end
