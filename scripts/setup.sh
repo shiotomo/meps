@@ -5,11 +5,18 @@ file=./minecraft/server.jar
 eval "$(cat .env <(echo) <(declare -x))"
 
 # .envの配布
+echo "copy .env"
+echo "cp ./.env ./api/.env"
 cp ./.env ./api/.env
+echo "cp ./.env ./slackbot/.env"
 cp ./.env ./slackbot/.env
+echo "cp ./.env ./discordbot/.env"
 cp ./.env ./discordbot/.env
+echo "cp ./.env ./fluentd/.env"
 cp ./.env ./fluentd/.env
+echo "cp ./.env ./worker/.env"
 cp ./.env ./worker/.env
+echo "complete copy .env !!"
 
 # Minecraftサーバ周りの処理
 if [ -e $file ]; then
