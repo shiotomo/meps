@@ -9,6 +9,7 @@ services:
     env_file: ./api/.env
     volumes:
       - ./api:/app
+      - ./minecraft:/app/minecraft
       - /var/run/docker.sock:/var/run/docker.sock:ro
     ports:
       - 4567:4567
@@ -36,6 +37,17 @@ services:
       - ./slackbot/.env
     volumes:
       - ./slackbot:/app
+    networks:
+      - msns-net
+  discordbot:
+    build:
+      context: .
+      dockerfile: ./docker/discordbot/Dockerfile
+    command: bundle exec ruby discordbot.rb
+    env_file:
+      - ./discordbot/.env
+    volumes:
+      - ./discordbot:/app
     networks:
       - msns-net
   fluentd:

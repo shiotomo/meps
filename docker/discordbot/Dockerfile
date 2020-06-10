@@ -7,6 +7,6 @@ ADD ./discordbot/Gemfile $HOME/Gemfile
 ADD ./discordbot/Gemfile.lock $HOME/Gemfile.lock
 
 RUN apt-get update
-RUN apt-get install -y libgmp-dev
+RUN apt-get install -y libgmp-dev libsodium-dev
 
 RUN bundle install
