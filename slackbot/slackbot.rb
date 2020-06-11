@@ -1,7 +1,7 @@
 require 'slack-ruby-client'
 
 require_relative './config/environment'
-require_relative './lib/minecraft'
+require_relative './lib/minecraft_account_list'
 
 Slack.configure do |conf|
   conf.token = ENV['SLACK_BOT_TOKEN']
@@ -23,7 +23,7 @@ client.on :message do |data|
   when 'hello'
     client.message channel: data['channel'], text: 'Hello. I\'m msns slack bot.'
   when 'get'
-    data = Minecraft.get_data(text[1])
+    data = MinecraftAccountList.get_data(text[1])
     client.message channel: data['channel'], text: data
   else
   end

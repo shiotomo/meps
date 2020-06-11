@@ -1,35 +1,40 @@
 require_relative './request_client'
 
-class Minecraft
+class MinecraftAccountList
   class << self
 
     # 指定したタイプのデータを取得する
     def get_data(type)
       case type
       when 'ops'
-        return get_data('ops')
+        return get_request('ops')
       when 'whitelist'
-        return get_data('whitelist')
+        return get_request('whitelist')
       else
         return "Not found: #{type}"
       end
     end
 
     # APIとやりとりをする
-    def request_get_api(type)
+    def get_request(type)
       url     = get_url(type)
       headers = {}
       body   =  {}
       request_client = RequestClient.new(url , headers, body)
-      return request_client.get()
+      res = request_client.get()
+      message = "== #{type} ==\n"
+      res.each do |data|
+        message += "#{data['name']}\n"
+      end
+      return message
     end
 
     # APIのURLを取得する
     def get_url(type)
-      url = ENV['API_URL']
+      url = ENV['API_URL'] + ":" + ENV['API_PORT']
       urls = {
-        whitelist: url + '/whitelist',
-        ops: url + '/ops'
+        whitelist: url + '/api/v1/whitelist',
+        ops: url + '/api/v1/ops'
       }
       return urls[:"#{type}"]
     end
