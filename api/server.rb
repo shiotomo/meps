@@ -19,12 +19,16 @@ configure do
   use Rack::CommonLogger, file
 end
 
+# 認証
+# 指定したTOKEN以外からのアクセスは禁止にする
+# TOKENが指定されていない場合はすべてのアクセスを許可する
 before do
-  # 指定したIPアドレス以外からのアクセスは禁止にする
   message = {
     status: 'HTTP 401: Unauthorized.'
   }
-  halt 403, message.to_json if ENV['ALLOW_HOST'] != '0.0.0.0' && ENV['ALLOW_HOST'] != request.ip
+  headers = request.env.select { |k, v| k.start_with?('HTTP_') }
+  # halt 403, message.to_json
+  halt 403, message.to_json if headers["HTTP_AUTHORIZATION"] != ENV['API_TOKEN'] && ENV['API_TOKEN'] != nil
 end
 
 # error handling
