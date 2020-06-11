@@ -11,12 +11,12 @@ class RequestClient
   # GETリクエストを送信する
   def get
     response = RestClient.get(@url, @headers)
-    return response
+    return JSON.parse(response.body)
   end
 
   # POSTリクエストを送信する
   def post
     response = RestClient.post(@url, @headers, @body)
-    return response
+    return JSON.parse(response.body)
   end
 end

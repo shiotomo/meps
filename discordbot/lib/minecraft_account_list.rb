@@ -1,6 +1,6 @@
 require_relative './request_client'
 
-class Minecraft
+class MinecraftAccountList
   class << self
 
     # 指定したタイプのデータを取得する
@@ -21,7 +21,12 @@ class Minecraft
       headers = {}
       body   =  {}
       request_client = RequestClient.new(url , headers, body)
-      return request_client.get()
+      res = request_client.get()
+      message = "== #{type} ==\n"
+      res.each do |data|
+        message += "#{data['name']}\n"
+      end
+      return message
     end
 
     # APIのURLを取得する
