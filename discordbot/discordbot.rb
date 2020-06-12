@@ -14,6 +14,18 @@ bot = Discordrb::Commands::CommandBot.new(
   prefix:'!'
 )
 
+bot.command :help do |event|
+  message = "== MSNS Discord Bot ==\n" +
+  "command list\n" +
+  "!help\n" +
+  "    ヘルプを表示します\n" +
+  "!get (ops|whitelist)\n" +
+  "    nameに指定したlistを表示します。 例) !get whitelist\n" +
+  "!nowlogin\n" +
+  "    現在サーバにログインしているユーザを表示します。\n"
+  event.send_message(message)
+end
+
 bot.command :get do |event|
   message = event.message.to_s.split(" ")
   data = MinecraftAccountList.get_data(message[1])
