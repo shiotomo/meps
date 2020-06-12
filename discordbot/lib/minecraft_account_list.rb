@@ -18,7 +18,7 @@ class MinecraftAccountList
     # APIとやりとりをする
     def get_request(type)
       url     = get_url(type)
-      headers = {}
+      headers = {Authorization: ENV['API_TOKEN']}
       body   =  {}
       request_client = RequestClient.new(url , headers, body)
       res = request_client.get()
