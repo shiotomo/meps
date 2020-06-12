@@ -22,7 +22,7 @@ class MinecraftAccountList
       body   =  {}
       request_client = RequestClient.new(url , headers, body)
       res = request_client.get()
-      return convert_slack_format(type, res)
+      return convert_slack_format(list_type, res)
     end
 
     # APIのURLを取得する
