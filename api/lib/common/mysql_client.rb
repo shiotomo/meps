@@ -12,6 +12,7 @@ class MysqlClient
     @connection.query('set character set utf8')
   end
 
+  # クエリを実行する
   def run_query(query)
     result = @connection.query(query)
     return result
