@@ -2,7 +2,7 @@ class AccessLogAnalysis < LogBase
   class << self
     # 現在ログインしている人のhashを返却する
     def get_access_count_where_now
-      query = "SELECT id, caused_at, level, log, created_at FROM access_log ORDER BY created_at ASC;"
+      query = "SELECT id, caused_at, level, log, created_at FROM access_log ORDER BY created_at ASC"
       access_log = get_log_query(query)
       File.open("./minecraft/whitelist.json") do |f|
         @whitelist_json = JSON.load(f)

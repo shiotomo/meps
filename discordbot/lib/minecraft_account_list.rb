@@ -22,11 +22,7 @@ class MinecraftAccountList
       body   =  {}
       request_client = RequestClient.new(url , headers, body)
       res = request_client.get()
-      message = "== #{type} ==\n"
-      res.each do |data|
-        message += "#{data['name']}\n"
-      end
-      return message
+      return convert_slack_format(res)
     end
 
     # APIのURLを取得する
@@ -42,7 +38,11 @@ class MinecraftAccountList
     # JSONデータをSlack上で見やすい表記に変換する
     def convert_slack_format(json_data)
       # TODO: 一旦そのまま返却する
-      return json_data
+      message = "== #{type} ==\n"
+      json_data.each do |data|
+        message += "#{data['name']}\n"
+      end
+      return message
     end
   end
 end
