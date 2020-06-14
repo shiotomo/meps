@@ -103,4 +103,10 @@ namespace '/api/v1' do
     now_access = AccessLogAnalysis.get_access_count_where_now
     return now_access.to_json
   end
+
+  # アクセスの累計数を返却する
+  get '/access/count' do
+    access_count = AccessLogAnalysis.get_access_count
+    return access_count.to_json
+  end
 end
