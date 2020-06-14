@@ -4,13 +4,7 @@ class AccessLogAnalysis < LogBase
     def get_access_count_where_now
       query = "SELECT id, caused_at, level, log, created_at FROM access_log ORDER BY created_at ASC"
       access_log = get_log_query(query)
-      File.open("./minecraft/whitelist.json") do |f|
-        @whitelist_json = JSON.load(f)
-      end
-      login_users = {}
-      @whitelist_json.each do |account|
-        login_users[:"#{account["name"]}"] = false
-      end
+      login_users = get_whitelist(false)
       access_log.each do |access|
         log = access["log"]
         name = log.split(" ")[0]
@@ -33,13 +27,7 @@ class AccessLogAnalysis < LogBase
     def get_access_count
       query = "SELECT id, caused_at, level, log, created_at FROM access_log ORDER BY created_at ASC"
       access_log = get_log_query(query)
-      File.open("./minecraft/whitelist.json") do |f|
-        @whitelist_json = JSON.load(f)
-      end
-      login_users = {}
-      @whitelist_json.each do |account|
-        login_users[:"#{account["name"]}"] = 0
-      end
+      login_users = get_whitelist(0)
       access_log.each do |access|
         log = access["log"]
         name = log.split(" ")[0]
@@ -51,6 +39,18 @@ class AccessLogAnalysis < LogBase
 
     # 指定した名前のアカウントのログイン数を返却する
     def get_access_count_where_name(name)
+    end
+
+    private
+    def get_whitelist(init_value)
+      File.open("./minecraft/whitelist.json") do |f|
+        @whitelist_json = JSON.load(f)
+      end
+      login_users = {}
+      @whitelist_json.each do |account|
+        login_users[:"#{account["name"]}"] = init_value
+      end
+      return login_users
     end
   end
 end
