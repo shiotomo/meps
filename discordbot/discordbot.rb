@@ -18,7 +18,7 @@ bot.command :help do |event|
   message = "== MSNS Discord Bot ==\n" +
   "command list\n" +
   "!help\n" +
-  "    ヘルプを表示します\n" +
+  "    ヘルプを表示します。\n" +
   "!get (ops|whitelist)\n" +
   "    nameに指定したlistを表示します。 例) !get whitelist\n" +
   "!nowlogin\n" +
