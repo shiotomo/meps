@@ -1,30 +1,19 @@
 #!/bin/env bash
 
-eval "$(cat ./scripts/.env <(echo) <(declare -x))"
+eval "$(cat ./.env <(echo) <(declare -x))"
 
 build() {
   git pull origin master
   docker-compose build
 }
 
-stop() {
-  docker-compose stop
-}
-
-start() {
-  build
-  docker-compose up -d
-}
-
-restart() {
-  stop
-  build
-  start
-}
-
 env() {
-  echo "ALLOWHOST:" $ALLOW_HOST
-  echo "PORT:" $PORT
+  echo "API_URL:" $API_URL
+  echo "API_PORT:" $API_PORT
+  echo "API_TOKEN:" $API_TOKEN
+  echo "SLACK_BOT_TOKEN:" $SLACK_BOT_TOKEN
+  echo "DISCORD_BOT_CLIENT_ID:" $DISCORD_BOT_CLIENT_ID
+  echo "DISCORD_BOT_TOKEN:" $DISCORD_BOT_TOKEN
   echo "MINECRAFT_VERSION:" $MINECRAFT_VERSION
   echo "MYSQL_ROOT_PASSWORD:" $MYSQL_ROOT_PASSWORD
   echo "MYSQL_HOST:" $MYSQL_HOST
@@ -38,15 +27,6 @@ env() {
 case "$1" in
   build)
     build
-    ;;
-  start)
-    start
-    ;;
-  stop)
-    stop
-    ;;
-  restart)
-    restart
     ;;
   env)
     env
