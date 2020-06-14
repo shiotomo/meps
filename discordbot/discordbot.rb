@@ -22,7 +22,7 @@ bot.command :help do |event|
   "!get (ops|whitelist)\n" +
   "    nameに指定したlistを表示します。 例) !get whitelist\n" +
   "!nowlogin\n" +
-  "    現在サーバにログインしているユーザを表示します。\n"
+  "    現在サーバにログインしているユーザを表示します。\n" +
   "!count\n" +
   "    全ユーザの累計アクセス数を表示します。\n"
   event.send_message(message)
