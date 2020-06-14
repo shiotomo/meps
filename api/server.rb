@@ -58,13 +58,14 @@ namespace '/api/v1' do
   end
 
   # whitelist.jsonにアカウントを追加する
-  post '/whitelist/add' do
-    body = request.body.read
-    data = JSON.load(body)
-    whitelist_path = __dir__ + '/minecraft/whitelist.json'
-    message = Minecraft.add_whitelist(whitelist_path, data['name'])
-    return message.to_json
-  end
+  # MEMO: 現在非推奨APIとしているのでコメントアウト
+  # post '/whitelist/add' do
+  #   body = request.body.read
+  #   data = JSON.load(body)
+  #   whitelist_path = __dir__ + '/minecraft/whitelist.json'
+  #   message = Minecraft.add_whitelist(whitelist_path, data['name'])
+  #   return message.to_json
+  # end
 
   # ops.jsonを返却する
   get '/ops' do
