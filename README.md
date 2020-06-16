@@ -2,15 +2,8 @@
 
 ## このシステムについて
 
-MinecraftサーバをDockerコンテナ上で管理するシステムです。
-サーバの状態を管理し、API経由で状態をお知らせします。
-
-## APIサーバのアクセス制御
-
-APIサーバはIPアドレスによる、アクセス制御機能があります。
-アクセスを許可したいIPアドレスを.envの `ALLOW_HOST` に指定することで、
-そのホストからのみAPIへのアクセスを受け付けます。
-アクセス制御を行わない場合は、 `ALLOW_HOST` に `0.0.0.0` を指定してください。
+MinecraftサーバをDockerコンテナ上で管理するシステムです。  
+SlackやDiscordなどのチャットツール経由でサーバの稼働状況を知ることができます。
 
 ## 使用技術
 
@@ -39,14 +32,15 @@ APIサーバはIPアドレスによる、アクセス制御機能があります
 
 ### 初期設定
 
-api, fluentd, worker, slackbot, discordbot, slackbot, scriptsそれぞれに.envファイルを作成します。
-各プロジェクト内で.env.sampleをコピーして.envの設定を行ってください。
+api, fluentd, worker, slackbot, discordbot, slackbot, scriptsそれぞれに.envファイルを作成します。  
+.env.sampleを.envにコピーして設定を行ってください。
 
 ```
 cp .env.sample .env
 ```
 
-Minecraftサーバをダウンロードします。
+初期設定を行います。  
+以下のコマンドを実行すれば完了です。
 
 ```
 make setup
@@ -55,5 +49,6 @@ make setup
 ### 起動
 
 ```
-make start
+make build
+docker-compose up
 ```
