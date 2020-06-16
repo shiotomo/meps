@@ -39,8 +39,8 @@ api, fluentd, worker, slackbot, discordbot, slackbot, scriptsそれぞれに.env
 cp .env.sample .env
 ```
 
-初期設定を行います。  
-以下のコマンドを実行すれば完了です。
+初期設定用のスクリプトを実行します。  
+以下のコマンドを実行してください。
 
 ```
 make setup
