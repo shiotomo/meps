@@ -4,9 +4,7 @@ require 'json'
 require_relative './config/environment'
 require_relative './lib/minecraft_account_list'
 require_relative './lib/minecraft_server_analysis'
-
-puts ENV['DISCORD_BOT_TOKEN']
-puts ENV['DISCORD_BOT_CLIENT_ID']
+require_relative './lib/msns_api'
 
 bot = Discordrb::Commands::CommandBot.new(
   token: ENV['DISCORD_BOT_TOKEN'],
@@ -24,7 +22,9 @@ bot.command :help do |event|
   "!nowlogin\n" +
   "    現在サーバにログインしているユーザを表示します。\n" +
   "!count\n" +
-  "    全ユーザの累計アクセス数を表示します。\n"
+  "    全ユーザの累計アクセス数を表示します。\n" +
+  "!status\n" +
+  "    msnsの状態を表示します。\n"
   event.send_message(message)
 end
 
@@ -43,6 +43,12 @@ end
 bot.command :count do |event|
   message = event.message.to_s.split(" ")
   data = MinecraftServerAnalysis.get_access_count
+  event.send_message(data)
+end
+
+bot.command :status do |event|
+  message = event.message.to_s.split(" ")
+  data = MsnsApi.get_status
   event.send_message(data)
 end
 

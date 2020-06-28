@@ -79,7 +79,7 @@ namespace '/api/v1' do
   get '/status' do
     server_status = DockerContainer.get_status(__dir__)
     status = {
-      version: ENV['MINECRAFT_VERSION'],
+      minecraft_version: ENV['MINECRAFT_VERSION'],
       host: request.host,
       status: server_status
     }
