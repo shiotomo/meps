@@ -11,6 +11,7 @@ services:
       - ./api:/app
       - ./minecraft:/app/minecraft
       - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./docker-compose.yml:/app/docker-compose.yml
     ports:
       - 4567:4567
     networks:
