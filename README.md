@@ -1,9 +1,8 @@
-# Minecraft Server Notification System
+# Minecraft server Extension Platform System
 
 ## このシステムについて
 
-MinecraftサーバをDockerコンテナ上で管理するシステムです。  
-SlackやDiscordなどのチャットツール経由でサーバの稼働状況を知ることができます。
+Minecraftサーバを管理する拡張システムです。  
 
 ## 使用技術
 
