@@ -15,7 +15,7 @@ services:
     ports:
       - 4567:4567
     networks:
-      - msns-net
+      - meps-net
   worker:
     build:
       context: .
@@ -28,7 +28,7 @@ services:
       - ./backup:/app/backup
       - ./minecraft:/app/minecraft
     networks:
-      - msns-net
+      - meps-net
   slackbot:
     build:
       context: .
@@ -39,7 +39,7 @@ services:
     volumes:
       - ./slackbot:/app
     networks:
-      - msns-net
+      - meps-net
   discordbot:
     build:
       context: .
@@ -50,7 +50,7 @@ services:
     volumes:
       - ./discordbot:/app
     networks:
-      - msns-net
+      - meps-net
   fluentd:
     build:
       context: .
@@ -62,7 +62,7 @@ services:
       - ./minecraft:/app/minecraft
       - ./api:/app/api
     networks:
-      - msns-net
+      - meps-net
   db:
     container_name: db
     build:
@@ -74,7 +74,7 @@ services:
       - ./db/my.cnf:/etc/mysql/conf.d/my.cnf
       - ./db/migration:/docker-entrypoint-initdb.d
     networks:
-      - msns-net
+      - meps-net
   mc_server:
     container_name: mc_server
     build:
@@ -88,7 +88,7 @@ services:
     tty: true
     stdin_open: true
     networks:
-      - msns-net
+      - meps-net
 networks:
-  msns-net:
+  meps-net:
     driver: bridge

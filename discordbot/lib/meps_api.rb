@@ -1,6 +1,6 @@
 require_relative './request_client'
 
-class MsnsApi
+class MepsApi
   class << self
     def get_status
       url = ENV['API_URL'] + ":" + ENV['API_PORT'] + '/api/v1/status'
@@ -14,7 +14,7 @@ class MsnsApi
     private
     # JSONデータをDiscord上で見やすい表記に変換する
     def convert_discord_format(json_data)
-      message = "== Msns System Status ==\n"
+      message = "== Meps System Status ==\n"
       status = ""
       json_data.each do |key, value|
         if key != "status"

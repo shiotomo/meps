@@ -3,7 +3,7 @@ require 'yaml'
 
 class DockerContainer
   class << self
-    # msnsのコンテナ稼働状況を返却する
+    # mepsのコンテナ稼働状況を返却する
     def get_status(current_dir)
       container_status_map = {}
       container_list = load_docker_compose_yml(current_dir)
@@ -25,7 +25,7 @@ class DockerContainer
       docker_compose_yml_path = current_dir.to_s + '/docker-compose.yml'
       yaml = YAML.load_file(docker_compose_yml_path)
       container_list = yaml['services'].keys
-      container_list = container_list.collect { |item| 'msns_' + item }
+      container_list = container_list.collect { |item| 'meps_' + item }
       return container_list
     end
   end

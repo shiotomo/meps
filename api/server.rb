@@ -14,7 +14,7 @@ require_relative './lib/core/access_log_analysis'
 set :show_exceptions, :after_handler
 
 configure do
-  file = File.new("./logs/msns_#{settings.environment}.log", 'a+')
+  file = File.new("./logs/meps_#{settings.environment}.log", 'a+')
   puts file
   file.sync = true
   use Rack::CommonLogger, file

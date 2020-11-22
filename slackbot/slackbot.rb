@@ -21,7 +21,7 @@ client.on :message do |data|
   # データ取得系
   case text[0]
   when 'hello'
-    client.message channel: data['channel'], text: 'Hello. I\'m msns slack bot.'
+    client.message channel: data['channel'], text: 'Hello. I\'m meps slack bot.'
   when 'get'
     data = MinecraftAccountList.get_data(text[1])
     client.message channel: data['channel'], text: data

@@ -3,7 +3,7 @@ require 'yaml'
 
 class DockerContainer
   class << self
-    # msnsのコンテナ稼働状況を返却する
+    # mepsのコンテナ稼働状況を返却する
     def get_status(current_dir)
       container_status_map = {}
       container_list = load_docker_compose_yml(current_dir)
