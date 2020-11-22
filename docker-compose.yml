@@ -4,7 +4,7 @@ services:
   api:
     build:
       context: .
-      dockerfile: ./docker/api/Dockerfile
+      dockerfile: ./api/Dockerfile
     command: bundle exec ruby server.rb -e production -p 4567
     env_file: ./api/.env
     volumes:
@@ -19,7 +19,7 @@ services:
   worker:
     build:
       context: .
-      dockerfile: ./docker/worker/Dockerfile
+      dockerfile: ./worker/Dockerfile
     command: bundle exec clockwork cron_worker.rb
     env_file:
       - ./worker/.env
@@ -32,7 +32,7 @@ services:
   slackbot:
     build:
       context: .
-      dockerfile: ./docker/slackbot/Dockerfile
+      dockerfile: ./slackbot/Dockerfile
     command: bundle exec ruby slackbot.rb
     env_file:
       - ./slackbot/.env
@@ -43,7 +43,7 @@ services:
   discordbot:
     build:
       context: .
-      dockerfile: ./docker/discordbot/Dockerfile
+      dockerfile: ./discordbot/Dockerfile
     command: bundle exec ruby discordbot.rb
     env_file:
       - ./discordbot/.env
@@ -54,7 +54,7 @@ services:
   fluentd:
     build:
       context: .
-      dockerfile: ./docker/fluentd/Dockerfile
+      dockerfile: ./fluentd/Dockerfile
     command: bundle exec fluentd -c ./fluent.conf
     env_file: ./fluentd/.env
     volumes:
@@ -67,7 +67,7 @@ services:
     container_name: db
     build:
       context: .
-      dockerfile: ./docker/db/Dockerfile
+      dockerfile: ./db/Dockerfile
     env_file: ./api/.env
     volumes:
       - ./mysql_data:/var/lib/mysql
@@ -79,7 +79,7 @@ services:
     container_name: mc_server
     build:
       context: .
-      dockerfile: ./docker/minecraft/Dockerfile
+      dockerfile: ./minecraft/Dockerfile
     volumes:
       - ./minecraft:/workspace
     restart: always
