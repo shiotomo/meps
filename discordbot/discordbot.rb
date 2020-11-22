@@ -4,7 +4,7 @@ require 'json'
 require_relative './config/environment'
 require_relative './lib/minecraft_account_list'
 require_relative './lib/minecraft_server_analysis'
-require_relative './lib/msns_api'
+require_relative './lib/meps_api'
 
 bot = Discordrb::Commands::CommandBot.new(
   token: ENV['DISCORD_BOT_TOKEN'],
@@ -13,7 +13,7 @@ bot = Discordrb::Commands::CommandBot.new(
 )
 
 bot.command :help do |event|
-  message = "== MSNS Discord Bot ==\n" +
+  message = "== Meps Discord Bot ==\n" +
   "command list\n" +
   "!help\n" +
   "    ヘルプを表示します。\n" +
@@ -24,7 +24,7 @@ bot.command :help do |event|
   "!count\n" +
   "    全ユーザの累計アクセス数を表示します。\n" +
   "!status\n" +
-  "    msnsの状態を表示します。\n"
+  "    mepsの状態を表示します。\n"
   event.send_message(message)
 end
 
@@ -48,7 +48,7 @@ end
 
 bot.command :status do |event|
   message = event.message.to_s.split(" ")
-  data = MsnsApi.get_status
+  data = MepsApi.get_status
   event.send_message(data)
 end
 

@@ -1,5 +1,5 @@
-CREATE DATABASE  IF NOT EXISTS msns;
-use msns;
+CREATE DATABASE  IF NOT EXISTS meps;
+use meps;
 CREATE TABLE IF NOT EXISTS `access_log` (
     `id` BIGINT AUTO_INCREMENT,
     `caused_at` VARCHAR(256),

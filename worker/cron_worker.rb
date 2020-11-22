@@ -5,7 +5,7 @@ require_relative './lib/core/minecraft'
 require_relative './config/environment'
 
 # 実行時は/appから始まるため./からスタート
-log_file_path = './logs/msns_cron_worker.log'
+log_file_path = './logs/meps_cron_worker.log'
 
 File.open(log_file_path, 'w') unless File.exist?(log_file_path)
 @logger = Logger.new(log_file_path)
