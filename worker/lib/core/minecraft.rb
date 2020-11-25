@@ -1,6 +1,7 @@
 require 'zip'
 require 'json'
-require_relative '../common/request_client'
+
+require_relative '../client/request_client'
 
 class Minecraft
   MINECRAFT_API = 'https://api.mojang.com/users/profiles/minecraft/'
@@ -12,36 +13,6 @@ class Minecraft
       dir_name = create_back_up_dir_name(version)
       compress(minecraft_server_path, minecraft_server_back_up_path + '/' + dir_name)
       return 'Backup Success !!'
-    end
-
-    # whitelistにアカウントを追加する
-    def add_whitelist(whitelist_path, name)
-      response = get_account_info(name)
-      raise if response == nil
-      File.open(whitelist_path) do |f|
-        @whitelist_json = JSON.load(f)
-      end
-      @message = {status: 'Already exist.'}
-      @whitelist_json.each do |account|
-        return @message if account['uuid'] == response['id']
-      end
-      add_data = {'uuid': response['id'], 'name': response['name']}
-      @whitelist_json.push(add_data)
-      File.open(whitelist_path, 'w') do |f|
-        f.puts @whitelist_json.to_json.to_s
-      end
-      @message = {status: 'Add success!!'}
-      return @message
-    end
-
-    # nameからaccount情報を取得する
-    def get_account_info(name)
-      url = MINECRAFT_API + name
-      headers = {}
-      body = {}
-      client = RequestClient.new(url, headers, body)
-      response = client.get
-      return response
     end
 
     private
