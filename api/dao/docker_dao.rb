@@ -1,25 +1,7 @@
-require 'docker'
 require 'yaml'
 
 class DockerDao
   class << self
-    # mepsのコンテナ稼働状況を返却する
-    def get_status
-      container_status_map = {}
-      container_list = load_docker_compose_yml
-      # return container_list
-      cons = Docker::Container.all
-      container_list.each do |container|
-        container_status_map[:"#{container}"] = 'inactive'
-      end
-      cons.each do |con|
-        next unless container_status_map.key?(:"#{con.info.fetch("Image")}")
-        container_status_map[:"#{con.info.fetch("Image")}"] = 'active'
-      end
-      return container_status_map
-    end
-
-    private
     # docker_compose.ymlに記されているコンテナイメージ名のリストを返却する
     def load_docker_compose_yml
       docker_compose_yml_path = Dir.pwd + '/docker-compose.yml'
