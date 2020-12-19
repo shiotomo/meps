@@ -1,0 +1,2 @@
+class MinecraftLogService
+end
