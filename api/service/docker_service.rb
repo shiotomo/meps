@@ -4,7 +4,7 @@ require_relative '../dao/docker_dao.rb'
 
 class DockerService
   # mepsの稼働状況を取得する
-  def get_status
+  def get_status(request)
     container_status_map = {}
     container_list = DockerDao.load_docker_compose_yml()
     # return container_list
@@ -16,6 +16,11 @@ class DockerService
       next unless container_status_map.key?(:"#{con.info.fetch("Image")}")
       container_status_map[:"#{con.info.fetch("Image")}"] = 'active'
     end
-    return container_status_map
+    status = {
+      minecraft_version: ENV['MINECRAFT_VERSION'],
+      host: request.host,
+      status: server_status
+    }
+    return status.to_json()
   end
 end

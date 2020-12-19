@@ -6,6 +6,6 @@ class MinecraftLogService
   end
 
   def get_log(date)
-    return date == nil ? @minecraft_log_dao.get_all() : @minecraft_log_dao.get_where_date(date)
+    return date == nil ? @minecraft_log_dao.get_all().to_json() : @minecraft_log_dao.get_where_date(date).to_json()
   end
 end

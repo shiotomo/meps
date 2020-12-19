@@ -8,7 +8,7 @@ class AccessLogService
 
   # access_logを取得する
   def get_log(date)
-    return date == nil ? @access_log_dao.get_all() : @access_log_dao.get_where_date(date)
+    return date == nil ? @access_log_dao.get_all().to_json() : @access_log_dao.get_where_date(date).to_json()
   end
 
   # 現在ログインしているアカウントのhashを返却する
@@ -22,7 +22,7 @@ class AccessLogService
       accounts[:"#{name}"] = true if access == "login"
       accounts[:"#{name}"] = false if access == "logout"
     end
-    return login_accounts
+    return login_accounts.to_json()
   end
 
   def get_access_count
@@ -34,7 +34,7 @@ class AccessLogService
       access = log.include?("joined the game") ? "login" : "logout"
       accounts[:"#{name}"] += 1 if access == "login"
     end
-    return login_accounts
+    return login_accounts.to_json()
   end
 
   private
