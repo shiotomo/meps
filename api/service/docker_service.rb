@@ -19,7 +19,7 @@ class DockerService
     status = {
       minecraft_version: ENV['MINECRAFT_VERSION'],
       host: request.host,
-      status: server_status
+      status: container_status_map
     }
     return status.to_json()
   end

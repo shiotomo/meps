@@ -3,18 +3,20 @@ require_relative '../service/minecraft_service.rb'
 require_relative '../service/minecraft_log_service.rb'
 
 class MinecraftController < ApplicationController
-  @minecraft_service = MinecraftService.new()
-  @minecraft_log_service = MinecraftLogService.new()
+  before do
+    @minecraft_service = MinecraftService.new()
+    @minecraft_log_service = MinecraftLogService.new()
+  end
 
   get '/whitelist' do
-    return MinecraftService.get_whitelist()
+    return @minecraft_service.get_whitelist()
   end
 
   get '/ops' do
-    return MinecraftService.get_ops()
+    return @minecraft_service.get_ops()
   end
 
   get '/minecraft_log' do
-    return MinecraftLogService.get_log(params[:date])
+    return @minecraft_log_service.get_log(params[:date])
   end
 end

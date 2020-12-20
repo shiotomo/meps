@@ -2,7 +2,9 @@ require_relative './application_controller.rb'
 require_relative '../service/access_log_service.rb'
 
 class AccessController < ApplicationController
-  @access_log_service = AccessLogService.new()
+  before do
+    @access_log_service = AccessLogService.new()
+  end
 
   # access_logを取得する
   get '/access_log' do

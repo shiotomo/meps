@@ -1,4 +1,4 @@
-require '../client/mysql_client.rb'
+require_relative '../client/mysql_client.rb'
 
 class MinecraftLogDao
   def initialize
