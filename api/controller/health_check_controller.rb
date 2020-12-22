@@ -7,8 +7,6 @@ class HealthCheckController < ApplicationController
   end
 
   get '/status' do
-    pp @docker_service
-    pp @docker_service.methods
     return @docker_service.get_status(request)
   end
 end
