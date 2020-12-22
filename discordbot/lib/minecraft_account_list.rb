@@ -29,8 +29,8 @@ class MinecraftAccountList
     def get_url(list_type)
       url = ENV['API_URL'] + ":" + ENV['API_PORT']
       urls = {
-        whitelist: url + '/api/v1/whitelist',
-        ops: url + '/api/v1/ops'
+        whitelist: url + '/api/v1/minecraft/whitelist',
+        ops: url + '/api/v1/minecraft/ops'
       }
       return urls[:"#{list_type}"]
     end

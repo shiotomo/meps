@@ -3,7 +3,7 @@ require_relative './request_client'
 class MepsApi
   class << self
     def get_status
-      url = ENV['API_URL'] + ":" + ENV['API_PORT'] + '/api/v1/status'
+      url = ENV['API_URL'] + ":" + ENV['API_PORT'] + '/api/v1/health/status'
       headers = {Authorization: ENV['API_TOKEN']}
       body   =  {}
       request_client = RequestClient.new(url , headers, body)

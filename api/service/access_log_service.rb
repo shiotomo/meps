@@ -19,8 +19,8 @@ class AccessLogService
       log = access["log"]
       name = log.split(" ")[0]
       access = log.include?("joined the game") ? "login" : "logout"
-      accounts[:"#{name}"] = true if access == "login"
-      accounts[:"#{name}"] = false if access == "logout"
+      login_accounts[:"#{name}"] = true if access == "login"
+      login_accounts[:"#{name}"] = false if access == "logout"
     end
     return login_accounts.to_json()
   end
@@ -32,7 +32,7 @@ class AccessLogService
       log = access["log"]
       name = log.split(" ")[0]
       access = log.include?("joined the game") ? "login" : "logout"
-      accounts[:"#{name}"] += 1 if access == "login"
+      login_accounts[:"#{name}"] += 1 if access == "login"
     end
     return login_accounts.to_json()
   end
