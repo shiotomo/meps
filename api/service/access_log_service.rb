@@ -47,7 +47,7 @@ class AccessLogService
   end
 
   def get_accounts_hash(init_value)
-    whitelist = Minecraft_setting_file_dao.get_whitelist()
+    whitelist = MinecraftSettingFileDao.get_whitelist()
     accounts = {}
     whitelist.each do |account|
       accounts[:"#{account["name"]}"] = init_value
