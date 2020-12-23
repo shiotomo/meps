@@ -4,7 +4,7 @@ eval "$(cat ./.env <(echo) <(declare -x))"
 
 build() {
   git pull origin master
-  docker-compose build
+  docker-compose -f docker-compose-production.yml build
 }
 
 env() {
