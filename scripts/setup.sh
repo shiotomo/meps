@@ -48,6 +48,10 @@ elif [ "$MINECRAFT_VERSION" = "1.16.4" ]; then
   echo 'Install Version 1.16.4'
   wget -P ./minecraft https://launcher.mojang.com/v1/objects/35139deedbd5182953cf1caa23835da59ca3d7cd/server.jar
   echo "Complete !!"
+elif [ "$MINECRAFT_VERSION" = "1.16.5" ]; then
+  echo 'Install Version 1.16.5'
+  wget -P ./minecraft https://launcher.mojang.com/v1/objects/1b557e7b033b583cd9f66746b7a9ab1ec1673ced/server.jar
+  echo "Complete !!"
 else
   echo '.envのMINECRAFT_VERSIONが無効です。'
   exit 1
