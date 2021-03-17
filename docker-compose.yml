@@ -29,17 +29,6 @@ services:
       - ./minecraft:/app/minecraft
     networks:
       - meps-net
-  slackbot:
-    build:
-      context: .
-      dockerfile: ./slackbot/Dockerfile
-    command: bundle exec ruby slackbot.rb
-    env_file:
-      - ./slackbot/.env
-    volumes:
-      - ./slackbot:/app
-    networks:
-      - meps-net
   discordbot:
     build:
       context: .
