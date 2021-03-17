@@ -1,4 +1,4 @@
-FROM ruby:2.6.3
+FROM ruby:2.7.1
 
 RUN mkdir /app
 ENV HOME /app
