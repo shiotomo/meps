@@ -13,9 +13,6 @@ Minecraftサーバを管理する拡張システムです。
 - fluentd
   - Fluentd
   - MySQL
-- worker
-  - Ruby
-  - clockwork
 - slackbot
   - Ruby
 - discordbot
@@ -31,7 +28,7 @@ Minecraftサーバを管理する拡張システムです。
 
 ### 初期設定
 
-api, fluentd, worker, slackbot, discordbot, slackbot, scriptsそれぞれに.envファイルを作成します。  
+api, fluentd, slackbot, discordbot, slackbot, scriptsそれぞれに.envファイルを作成します。  
 .env.sampleを.envにコピーして設定を行ってください。
 
 ```
