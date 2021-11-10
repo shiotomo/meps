@@ -16,19 +16,6 @@ services:
       - 4567:4567
     networks:
       - meps-net
-  worker:
-    build:
-      context: .
-      dockerfile: ./worker/Dockerfile
-    command: bundle exec clockwork cron_worker.rb
-    env_file:
-      - ./worker/.env
-    volumes:
-      - ./worker:/app
-      - ./backup:/app/backup
-      - ./minecraft:/app/minecraft
-    networks:
-      - meps-net
   discordbot:
     build:
       context: .
