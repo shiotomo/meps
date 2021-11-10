@@ -1,4 +1,4 @@
-FROM openjdk:latest
+FROM amazoncorretto:17
 
 RUN mkdir /workspace
 WORKDIR /workspace
