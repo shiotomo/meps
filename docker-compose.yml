@@ -16,6 +16,10 @@ services:
       - 4567:4567
     networks:
       - meps-net
+    deploy:
+      resources:
+        limits:
+          memory: 3g
   discordbot:
     build:
       context: .
